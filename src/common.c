@@ -23,3 +23,11 @@ char *load_file(char const *path) {
     buffer[length] = '\0';
     return buffer;
 }
+
+int min(int lparam, int rparam) {
+    return lparam < rparam ? lparam : rparam;
+}
+
+int max(int lparam, int rparam) {
+    return lparam > rparam ? lparam : rparam;
+}

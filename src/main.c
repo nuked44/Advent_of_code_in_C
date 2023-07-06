@@ -7,6 +7,7 @@
 #include "common.h"
 
 #include "2015/2015_01.h"
+#include "2015/2015_02.h"
 
 typedef void (*FunctionPtr)(char *);
 
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
         int year_idx = year - 2015; // current year minus first year(2015)
         int day_idx = day - 1;
 
-        FunctionPtr fun[8][25] = {{run2015_01}};
+        FunctionPtr fun[8][25] = {{run2015_01, run2015_02}};
 
         if (year_idx <= NEWEST_YEAR_SUPPORTED && day_idx <= 31) {
             if (fun[year_idx][day_idx]) {
