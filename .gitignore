@@ -1,4 +1,5 @@
 aoc_c
 core
+valgrind-out.txt
 obj/
 .vscode/

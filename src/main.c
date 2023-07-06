@@ -6,7 +6,7 @@
 
 #include "common.h"
 
-#include "2015_01.h"
+#include "2015/2015_01.h"
 
 typedef void (*FunctionPtr)(char *);
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
                 gettimeofday(&t1, NULL);
                 fun[year_idx][day_idx](file);
                 gettimeofday(&t2, NULL);
-
+                free(file);
                 
 
                 elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0;    // sec to ms
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
         }
 
     } else {
-        printf("Use case: %s <year> [-optional <day>]\n", argv[0]);
+        printf("Use case: %s <year> <day>\n", argv[0]);
     }
     return 0;
 }

@@ -1,14 +1,16 @@
 CC := gcc
 CFLAGS := -Wall -Werror
-DBG_FLAGS := -g
+DBG_FLAGS := -ggdb3
 RELEASE_FLAGS := -o2
 
 SRC_DIR := src
 OBJ_DIR := obj
 TARGET := aoc_c
 
+.PHONY: all dbg release
+
 # Source files
-SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
+SRC_FILES := $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/**/*.c)
 # Object files
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
@@ -31,4 +33,4 @@ $(TARGET): $(OBJ_FILES)
 
 # Clean up object and target files
 clean:
-	rm -f $(OBJ_DIR)/*.o $(TARGET)
+	rm -f $(OBJ_DIR)/*.o $(OBJ_DIR)/**/*.o $(TARGET)
