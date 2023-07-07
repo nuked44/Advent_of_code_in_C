@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "./../common.h"
+#include "../common.h"
 
 void _2015_02_p1(char *input) {
     char *buffer = malloc((strlen(input) + 1) * sizeof(char));
