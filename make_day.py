@@ -35,6 +35,7 @@ if __name__ == "__main__":
         print(f"file: {year}_{day}.c already exists")
         exit()
     Path(f"./src/{year}").mkdir(exist_ok=True)
+    Path(f"./obj/{year}").mkdir(exist_ok=True)
     make_header(year, day)
     make_c_file(year, day)
 

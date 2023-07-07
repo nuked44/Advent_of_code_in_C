@@ -5,7 +5,7 @@
 #include "./../common.h"
 
 void _2015_02_p1(char *input) {
-    char *buffer = (char *)malloc((strlen(input) + 1) * sizeof(char));
+    char *buffer = malloc((strlen(input) + 1) * sizeof(char));
     char *buffer_adress = buffer;
     strcpy(buffer, input);
     int total = 0;
