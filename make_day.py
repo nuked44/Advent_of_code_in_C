@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 
+import re
 import sys
 from pathlib import Path
+
+class print_colors:
+    OK = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
 
 def make_header(year: int, day: int):
     header = open(f"./src/{year}/{year}_{day:02}.h", "w")
@@ -28,15 +35,49 @@ void run{year}_{day:02}(char *input) {{
 }}""")
     header.close()
 
+def make_input_file(year: int, day: int):
+    input_file = open(f"./inputs/input_{year}_{day:02}.txt", "w")
+    input_file.close()
+
+def findWholeWord(w):
+    return re.compile(r'\b({0})\b'.format(w)).search
+
+def insert_entry(year: int, day: int):
+    with open("./src/days.h", "r") as f:
+        entryfile = f.readlines()
+
+    if not findWholeWord(f"run{year}_{day:02}")(entryfile[4]):
+        entryfile[4] = f"{entryfile[4][:-2]}, run{year}_{day:02}{entryfile[4][-2:]}"
+        entryfile[-2] = f"#include \"{year}/{year}_{day:02}.h\"\n\n"
+        print(f"{print_colors.OK}added function to entry{print_colors.ENDC}")
+    else:
+        print(f"{print_colors.FAIL}function entry already exists{print_colors.ENDC}")
+
+    with open("./src/days.h", "w") as f:
+        contents = "".join(entryfile)
+        f.write(contents)
+
 if __name__ == "__main__":
     year = int(sys.argv[1])
     day = int(sys.argv[2])
-    if Path(f"./src/{year}/{year}_{day:02}.c").is_file():
-        print(f"file: {year}_{day}.c already exists")
-        exit()
+    
     Path(f"./src/{year}").mkdir(exist_ok=True)
     Path(f"./obj/{year}").mkdir(exist_ok=True)
-    make_header(year, day)
-    make_c_file(year, day)
+    if not Path(f"./src/{year}/{year}_{day:02}.h").is_file():
+        make_header(year, day)
+        print(f"{print_colors.OK}added ./src/{year}/{year}_{day:02}.h{print_colors.ENDC}")
+    else:
+        print(f"{print_colors.FAIL}file ./src/{year}/{year}_{day:02}.h already exists{print_colors.ENDC}")
+    if not Path(f"./src/{year}/{year}_{day:02}.c").is_file():
+        make_c_file(year, day)
+        print(f"{print_colors.OK}added ./src/{year}/{year}_{day:02}.c{print_colors.ENDC}")
+    else:
+        print(f"{print_colors.FAIL}file ./src/{year}/{year}_{day:02}.c already exists{print_colors.ENDC}")
+    if not Path(f"./inputs/input_{year}_{day:02}.txt").is_file():   
+        make_input_file(year, day)
+        print(f"{print_colors.OK}added ./inputs/input_{year}_{day:02}.txt{print_colors.ENDC}")
+    else:
+        print(f"{print_colors.FAIL}file ./inputs/input_{year}_{day:02}.txt{print_colors.ENDC}")
+    insert_entry(year, day)
 
 

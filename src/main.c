@@ -1,15 +1,11 @@
 #define NEWEST_YEAR_SUPPORTED 2023
-#define ADDED_FUNCTIONS {run2015_01, run2015_02, run2015_03}
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
 
 #include "common.h"
-
-#include "2015/2015_01.h"
-#include "2015/2015_02.h"
-#include "2015/2015_03.h"
+#include "days.h"
 
 typedef void (*FunctionPtr)(char *);
 
