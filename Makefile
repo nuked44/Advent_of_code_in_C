@@ -1,6 +1,6 @@
 CC := gcc
 CFLAGS := -Wall -Werror
-DBG_FLAGS := -ggdb3
+DBG_FLAGS := -ggdb3 -o0
 RELEASE_FLAGS := -o2
 
 SRC_DIR := src
@@ -24,6 +24,7 @@ dbg: CFLAGS += $(DBG_FLAGS)
 dbg: $(TARGET)
 
 release: CFLAGS += $(RELEASE_FLAGS)
+release: clean
 release: $(TARGET)
 
 # Compile .c files to .o files

@@ -38,7 +38,6 @@ int main(int argc, char *argv[]) {
                 fun[year_idx][day_idx](file);
                 gettimeofday(&t2, NULL);
                 free(file);
-                
 
                 elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0;    // sec to ms
                 elapsedTime += (t2.tv_usec - t1.tv_usec) / 1000.0; // us to ms
@@ -53,7 +52,8 @@ int main(int argc, char *argv[]) {
         }
 
     } else {
-        printf("Use case: %s <year> <day>\n", argv[0]);
+        printf("Use case: %s <year(2015-%d)> <day(1-25)>\n", argv[0],
+               NEWEST_YEAR_SUPPORTED);
     }
     return 0;
 }
