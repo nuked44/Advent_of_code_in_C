@@ -1,5 +1,5 @@
-#ifndef days
-#define days
+#ifndef ENTRIES
+#define ENTRIES
 
 #ifndef ADDED_FUNCTIONS
 #define ADDED_FUNCTIONS {run2015_01, run2015_02, run2015_03, run2015_04, run2015_05}

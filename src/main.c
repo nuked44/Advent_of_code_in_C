@@ -5,7 +5,7 @@
 #include <sys/time.h>
 
 #include "common.h"
-#include "days.h"
+#include "entries.h"
 
 typedef void (*FunctionPtr)(char *);
 

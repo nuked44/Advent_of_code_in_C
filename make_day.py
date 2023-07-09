@@ -43,7 +43,8 @@ def findWholeWord(w):
     return re.compile(r'\b({0})\b'.format(w)).search
 
 def insert_entry(year: int, day: int):
-    with open("./src/days.h", "r") as f:
+    entries_header = "./src/entries.h"
+    with open(entries_header, "r") as f:
         entryfile = f.readlines()
 
     if not findWholeWord(f"run{year}_{day:02}")(entryfile[4]):
@@ -53,7 +54,7 @@ def insert_entry(year: int, day: int):
     else:
         print(f"{print_colors.FAIL}function entry already exists{print_colors.ENDC}")
 
-    with open("./src/days.h", "w") as f:
+    with open(entries_header, "w") as f:
         contents = "".join(entryfile)
         f.write(contents)
 

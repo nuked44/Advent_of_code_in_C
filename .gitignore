@@ -1,5 +1,6 @@
 aoc_c
 core
 valgrind-out.txt
+.gdbinit
 obj/
 .vscode/
