@@ -61,14 +61,19 @@ char *trimwhitespace(char *str) {
 
     return str;
 }
-
+unsigned layer = 0;
 static int walkThrough(DataItem *unprocessed, DataItem *processed, char *key) {
+    // layer++;
+    if (isdigit(*key)) {
+        return atoi(key);
+    }
+
     uint16_t index = search(unprocessed, key);
+    // printf("l: %u, k: %s, op1: %s, op2: %s, op3: %s\n", layer, key, unprocessed[index].op[0],
+    // unprocessed[index].op[1], unprocessed[index].op[2]);
     int result;
     if (!isInProcessed(processed, key)) {
-        if (isdigit(*key)) {
-            return atoi(key);
-        } else if ((unprocessed[index].op[1] == NULL) && (unprocessed[index].op[2] == NULL)) {
+        if ((unprocessed[index].op[1] == NULL) && (unprocessed[index].op[2] == NULL)) {
             result = walkThrough(unprocessed, processed, unprocessed[index].op[0]);
         } else if ((unprocessed[index].op[2] == NULL)) {
             if (!strcmp(unprocessed[index].op[0], "NOT"))
@@ -89,6 +94,7 @@ static int walkThrough(DataItem *unprocessed, DataItem *processed, char *key) {
             }
         }
         processed[index].val = result;
+        processed[index].key = unprocessed[index].key;
     }
     return processed[index].val;
 }
