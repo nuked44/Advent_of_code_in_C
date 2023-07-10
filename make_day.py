@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -80,5 +81,5 @@ if __name__ == "__main__":
     else:
         print(f"{print_colors.FAIL}file ./inputs/input_{year}_{day:02}.txt{print_colors.ENDC}")
     insert_entry(year, day)
-
+    os.system("make clean")
 

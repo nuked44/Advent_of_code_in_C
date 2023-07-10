@@ -4,7 +4,7 @@
 #include <string.h>
 
 void _2015_05_p1(char *input) {
-    unsigned niceStrings = 0;
+    unsigned nice_strings = 0;
 
     char *buffer = malloc((strlen(input) + 1) * sizeof(char));
     char *buffer_adress = buffer;
@@ -16,14 +16,14 @@ void _2015_05_p1(char *input) {
         char prev = '\0';
         int vovels = 0;
         bool twice = false;
-        bool badString = false;
+        bool bad_string = false;
         for (int i = 0; line[i] != '\0'; i++) {
             char combo[3] = {'\0'};
             snprintf(combo, sizeof(combo), "%c%c", prev, line[i]);
 
             if (!strcmp(combo, "ab") || !strcmp(combo, "cd") ||
                 !strcmp(combo, "pq") || !strcmp(combo, "xy")) {
-                badString = true;
+                bad_string = true;
                 break;
             }
 
@@ -46,17 +46,17 @@ void _2015_05_p1(char *input) {
 
             prev = line[i];
         }
-        if (twice && (vovels >= 3) && !badString) {
-            niceStrings++;
+        if (twice && (vovels >= 3) && !bad_string) {
+            nice_strings++;
         }
         line = strtok_r(NULL, "\n", &save_ptr);
     }
     free(buffer_adress);
-    printf("%d\n", niceStrings);
+    printf("%d\n", nice_strings);
 }
 
 void _2015_05_p2(char *input) {
-    unsigned niceStrings = 0;
+    unsigned nice_strings = 0;
 
     char *save_ptr = NULL;
     char *line = strtok_r(input, "\n", &save_ptr);
@@ -84,13 +84,13 @@ void _2015_05_p2(char *input) {
         }
 
         if (match && repeat) {
-            niceStrings++;
+            nice_strings++;
         }
 
         line = strtok_r(NULL, "\n", &save_ptr);
     }
 
-    printf("%d\n", niceStrings);
+    printf("%d\n", nice_strings);
 }
 
 void run2015_05(char *input) {
