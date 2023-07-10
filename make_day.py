@@ -81,5 +81,5 @@ if __name__ == "__main__":
     else:
         print(f"{print_colors.FAIL}file ./inputs/input_{year}_{day:02}.txt{print_colors.ENDC}")
     insert_entry(year, day)
-    os.system("make clean")
+    os.system("rm -f aoc_c obj/main.o")
 
