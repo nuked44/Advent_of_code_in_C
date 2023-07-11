@@ -34,7 +34,7 @@ static uint16_t search(DataItem *table, char *key) {
 }
 
 static int isInProcessed(DataItem *table, char *key) {
-    for (size_t i = 0; i <= tableArraySize; i++) {
+    for (size_t i = 0; i < tableArraySize; i++) {
         if (table[i].key != NULL) {
             if (!strcmp(table[i].key, key)) {
                 return i;
