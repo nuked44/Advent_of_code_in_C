@@ -3,4 +3,5 @@ core
 valgrind-out.txt
 .gdbinit
 obj/
+tests/
 .vscode/
