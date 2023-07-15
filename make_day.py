@@ -38,6 +38,7 @@ void run{year}_{day:02}(char *input) {{
 
 def make_input_file(year: int, day: int):
     input_file = open(f"./inputs/input_{year}_{day:02}.txt", "w")
+    input_file.write(f"Get input from 'https://adventofcode.com/{year}/day/{day}/input'")
     input_file.close()
 
 def findWholeWord(w):
@@ -60,7 +61,7 @@ def insert_entry(year: int, day: int):
         f.write(contents)
 
 if __name__ == "__main__":
-    if len(sys.argv < 3):
+    if len(sys.argv) < 3:
         print(f"Usage: {sys.argv[0]} <year> <day>")
     year = int(sys.argv[1])
     day = int(sys.argv[2])
@@ -81,7 +82,7 @@ if __name__ == "__main__":
         make_input_file(year, day)
         print(f"{print_colors.OK}added ./inputs/input_{year}_{day:02}.txt{print_colors.ENDC}")
     else:
-        print(f"{print_colors.FAIL}file ./inputs/input_{year}_{day:02}.txt{print_colors.ENDC}")
+        print(f"{print_colors.FAIL}file ./inputs/input_{year}_{day:02}.txt already exists{print_colors.ENDC}")
     insert_entry(year, day)
     os.system("rm -f aoc_c obj/main.o")
 
