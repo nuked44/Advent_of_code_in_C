@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-#include "common.h"
+#include "../lib/common.h"
 #include "entries.h"
 
 typedef void (*FunctionPtr)(char *);

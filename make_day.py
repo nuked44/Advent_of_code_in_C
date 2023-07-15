@@ -60,6 +60,8 @@ def insert_entry(year: int, day: int):
         f.write(contents)
 
 if __name__ == "__main__":
+    if len(sys.argv < 3):
+        print(f"Usage: {sys.argv[0]} <year> <day>")
     year = int(sys.argv[1])
     day = int(sys.argv[2])
     
