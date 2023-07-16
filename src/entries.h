@@ -2,7 +2,7 @@
 #define ENTRIES
 
 #ifndef ADDED_FUNCTIONS
-#define ADDED_FUNCTIONS {run2015_01, run2015_02, run2015_03, run2015_04, run2015_05, run2015_06, run2015_07, run2015_08, run2015_09, run2015_10}
+#define ADDED_FUNCTIONS {run2015_01, run2015_02, run2015_03, run2015_04, run2015_05, run2015_06, run2015_07, run2015_08, run2015_09, run2015_10, run2015_11}
 #endif
 
 #include "2015/2015_01.h"
@@ -15,5 +15,6 @@
 #include "2015/2015_08.h"
 #include "2015/2015_09.h"
 #include "2015/2015_10.h"
+#include "2015/2015_11.h"
 
 #endif
