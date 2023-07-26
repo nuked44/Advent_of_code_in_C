@@ -1,7 +1,7 @@
 #ifndef HASHSET
 #define HASHSET
 
-// Defines the HashTable.
+// Defines the HashSet
 typedef struct HashSet {
     // Contains an array of pointers to items.
     char **items;
